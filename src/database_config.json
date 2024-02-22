@@ -1,0 +1,6 @@
+{   
+    "user": "root",
+    "password": "root",
+    "host": "mysql",
+    "database": "librarydb"
+}
