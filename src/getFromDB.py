@@ -14,12 +14,12 @@ def mi_evento():
     '''Search in the database the all the books in the DB.'''
     data_list = []
     dirname = os.path.dirname(__file__)
-    filename = os.path.join(dirname, 'database_config.json')  
+    filename = os.path.join(dirname, 'database_config.json')
+    val = request.get_json()  
     with open(filename, 'r') as f:
-        connection = mysql.connector.connect(user='root', password='root', host='mysql', port="3306", database='librarydb')
+        connection = mysql.connector.connect(user='root', password='root', host='localhost', port="3306", database='librarydb')
         cursor = connection.cursor()
-
-        query = ("SELECT * FROM books")
+        query = ("SELECT * FROM books WHERE idbooks LIKE '%" + val["val"] + "%' OR title LIKE '%" + val["val"] + "%' OR autor_name LIKE '%" + val["val"] + "%'")
 
         cursor.execute(query)
         #Generating Json

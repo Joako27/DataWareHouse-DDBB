@@ -14,15 +14,22 @@
         <section id="search-section">
             <label for="search-input">Buscar libros:</label>
             <input type="text" id="search-input" placeholder="Título, autor, ISBN...">
-            <button id="search-button">Buscar</button>
+            <button id="search-button" onclick="search()">Buscar</button>
         </section>
         <section id="results-section">
             <!-- Aquí se mostrarán los resultados de la búsqueda -->
+            <div id="results1"></div>
+            <div id="results2"></div>
+        </section>
+        <section id="stats">
+            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+            <div id="stats1"></div>
         </section>
     </main>
     <footer>
         <p>&copy; 2024 Data Warehouse Project</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="getData.js"></script>
+    <script src="..\..\package\dist\chart.umd.js"></script>
 </body>
 </html>

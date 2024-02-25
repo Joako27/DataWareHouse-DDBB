@@ -1,0 +1,17 @@
+import requests
+import json
+
+# URL de la API
+url = "https://openlibrary.org/search.json?q=all"  
+
+response = requests.get(url)
+if response.status_code == 200:
+    api_data = response.json()
+    json_data = json.dumps(api_data)
+    
+    # Guardar los datos en un archivo local
+    with open('datos.json', 'w') as f:
+        f.write(json_data)
+else:
+    print("Error al obtener los datos de la API:", response.status_code)
+    exit()
