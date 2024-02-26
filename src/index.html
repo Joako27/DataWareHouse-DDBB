@@ -10,7 +10,8 @@
     <header>
         <h1>Data Warehouse - OpenLibrary</h1>
     </header>
-    <main>
+    <main onload="doGraph()">
+        <div><a href="#stats">Estadísticas</a></div>
         <section id="search-section">
             <label for="search-input">Buscar libros:</label>
             <input type="text" id="search-input" placeholder="Título, autor, ISBN...">
@@ -21,15 +22,21 @@
             <div id="results1"></div>
             <div id="results2"></div>
         </section>
+    </main>
+    <body onload="miFuncion()">
+        <h1 style="text-align: center;">Estadísticas</h1>
         <section id="stats">
             <!-- Aquí se mostrarán los resultados de la búsqueda -->
             <div id="stats1"></div>
+            <div id="stats2"></div>
+            <div id="stats3"></div>
         </section>
-    </main>
+    </body>
     <footer>
         <p>&copy; 2024 Data Warehouse Project</p>
     </footer>
     <script src="getData.js"></script>
-    <script src="..\..\package\dist\chart.umd.js"></script>
+    <script src="package\dist\chart.umd.js"></script>
+    <script src="package\dist\jquery-3.6.4.min.js"></script>
 </body>
 </html>

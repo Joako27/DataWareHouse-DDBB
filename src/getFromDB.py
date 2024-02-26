@@ -59,5 +59,32 @@ def mi_evento():
     response = jsonify(data_list)
     return response
 
+@app.route('/stats1', methods=['POST'])
+@cross_origin()
+def mi_evento2():
+    '''Search in the database ya_leyendo and quieren_leer.'''
+    data_list = []
+    dirname = os.path.dirname(__file__)
+    filename = os.path.join(dirname, 'database_config.json') 
+    with open(filename, 'r') as f:
+        connection = mysql.connector.connect(user='root', password='root', host='localhost', port="3306", database='librarydb')
+        cursor = connection.cursor()
+        query = ("SELECT title, quieren_leer, ya_leyendo FROM books")
+        cursor.execute(query)
+        #Generating Json
+        for (title, quieren_leer, ya_leyendo) in cursor:
+            ti = title
+            qu = quieren_leer
+            ya = ya_leyendo
+            data = {
+                'Title': ti,
+                "QuierenLeer": qu,
+                "YaLeyendo": ya,
+            }
+            data_list.append(data)
+        cursor.close()
+    response = jsonify(data_list)
+    return response
+
 if __name__ == '__main__':
     app.run(host="0.0.0.0", debug=True)
